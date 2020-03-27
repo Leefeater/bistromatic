@@ -1,3 +1,6 @@
+import { Video } from '@andyet/simplewebrtc';
+
+
 export class  VideoChatRoom extends React.Component {
 
 
@@ -7,9 +10,7 @@ export class  VideoChatRoom extends React.Component {
     }
 
     render() {
-
-        console.log(this.props)
-        return (<h1>Hi</h1>)
+        return <h1>ruin</h1>
     }
 
 }

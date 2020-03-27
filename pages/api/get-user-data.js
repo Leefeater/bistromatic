@@ -1,13 +1,24 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+import uuid from 'uuid'
 
-export function getUserData(req, res) {
-    res.setHeader({
-        userDataToken: jwt.sign(
-            {
-              id: 'your-internal-user-id-for-this-user',
-              aCustomExampleField: 'you can put whatever in this object'
-            },
-            "1e03660d-88f8-41f4-9d5a-627bee10f20d"
-          )
-    })  
+export default function getUserData(req, res) {
+
+    res.statusCode = 200;
+
+    const userDataToken = jwt.sign(
+        {
+            id: uuid(),
+            displayName: uuid(),
+        },
+        "1e03660d-88f8-41f4-9d5a-627bee10f20d"
+    );
+    res.setHeader(
+        'Content-Type', 'application/json',
+    )
+    //res.setHeader('userDataToken', userDataToken);
+    console.log(userDataToken);
+
+    res.end( JSON.stringify({userDataToken}) )
+
 }
+
